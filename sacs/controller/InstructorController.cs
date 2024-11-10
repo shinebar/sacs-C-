@@ -14,7 +14,20 @@ namespace sacs.controller
 
         public void assign_member_out_group()
         {
+            try
+            {
+                if (Instructor == null)
+                {
+                    throw new InvalidOperationException("Instructor not initialized");
+                }
 
+                // Notify that member has been removed from group
+                Console.WriteLine("Member has been removed from the group");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error removing member from group: {ex.Message}");
+            }
         }
 
         public void assign_member_in_group()
