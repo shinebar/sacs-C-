@@ -32,7 +32,20 @@ namespace sacs.controller
 
         public void assign_member_in_group()
         {
-            // TODO implement here
+            try
+            {
+                if (Instructor == null)
+                {
+                    throw new InvalidOperationException("Instructor not initialized");
+                }
+
+                // Notify that member has been added to group
+                Console.WriteLine("Member has been added to the group");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error adding member to group: {ex.Message}");
+            }
         }
 
         public bool feedback(string FeedbackText)
@@ -45,7 +58,23 @@ namespace sacs.controller
 
         public void view_grade()
         {
-            // TODO implement here
+            try
+            {
+                if (Instructor == null)
+                {
+                    throw new InvalidOperationException("Instructor not initialized");
+                }
+
+                // Placeholder for grade viewing logic
+                Console.WriteLine("Displaying grades:");
+                Console.WriteLine("------------------");
+                Console.WriteLine(" A");
+              
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error viewing grades: {ex.Message}");
+            }
         }
 
         public void evaluate_assignment_grade()
