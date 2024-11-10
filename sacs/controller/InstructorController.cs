@@ -1,9 +1,5 @@
 ﻿using sacs.entity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace sacs.controller
 {
@@ -18,7 +14,7 @@ namespace sacs.controller
 
         public void assign_member_out_group()
         {
-            
+
         }
 
         public void assign_member_in_group()
@@ -26,9 +22,12 @@ namespace sacs.controller
             // TODO implement here
         }
 
-        public void feedback()
+        public bool feedback(string FeedbackText)
         {
-            // TODO implement here
+
+            Console.WriteLine($"Feedback stored: {FeedbackText}");
+            return true;
+
         }
 
         public void view_grade()

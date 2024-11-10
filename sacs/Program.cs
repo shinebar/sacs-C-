@@ -44,33 +44,13 @@ namespace assignment3
         }
         public static class InstructorExtensions
         {
-            public static async Task OpenAssessmentWithTimeout(this Instructor instructor, Admin admin)
-            {
-                // Simulate the timeout
-                await Task.Delay(5000); // Simulate a long loading time
-                Console.WriteLine($"Failed to open assessment with ID: {manage.ManageId} due to timeout.");
-            }
-
-            public static bool StoreFeedback(this Instructor instructor, Feedback feedback, bool success = true)
-            {
-                if (success)
-                {
-                    Console.WriteLine($"Feedback stored: {feedback.FeedbackText}");
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine($"Failed to store feedback: {feedback.FeedbackText}.");
-                    return false;
-                }
-            }
+            
         }
 
         static void Main(string[] args)
         {
             Group group = new Group("1", "101");
-            group.AddMember(new User("U1", "Alice"));
-            group.AddMember(new User("U2", "Bob"));
+          
 
             group.AddAssessment(new Assessment("A1", "Math Assessment", "101"));
             group.AddAssessment(new Assessment("A2", "Science Assessment", "101"));
@@ -94,7 +74,7 @@ namespace assignment3
             group.SubmitAssessment("A2", ".jpg");
 
             User student1 = new User("S1", "John Doe", "john@example.com", "Computer Science");
-            Instructor instructor1 = new User("I1", "Dr. Smith", "smith@example.com", "Mathematics");
+            Instructor instructor1 = new Instructor("I1", "Dr. Smith", "smith@example.com", "Mathematics");
 
             Assessment assessment = new Assessment("A1", "Final Project", "Project", "2024-11-10");
 
@@ -110,7 +90,6 @@ namespace assignment3
 
             Console.WriteLine("\nStandard Case: Instructors and students view reports.");
             instructor1.ViewReport(assessment);
-            student1.ViewReport(assessment);
 
             Console.WriteLine("\nEdge Case: Simulating email delivery failure.");
             EmailService.SendConfirmationEmail(student1, false);
@@ -118,7 +97,7 @@ namespace assignment3
             Console.WriteLine("\nEdge Case: Simulating plagiarism report upload failure.");
             PlagiarismService.UploadReport(assessment, false);
 
-            Instructor instructor = new Instructor("I1", "Dr. Smith", "Mathematics");
+            Instructor instructor = new Instructor("I1", "Dr. Smith", "Mathematics", "Mathematics@gmail.com");
 
             Manage assessmentManagement = new Manage("A1");
 
@@ -130,18 +109,14 @@ namespace assignment3
             instructor.GradeAssessment(grade);
 
             Console.WriteLine("\nStandard Case: Instructors can generate feedback.");
-            Feedback feedback = new Feedback("Excellent work on the assessment!");
-            instructor.GenerateFeedback(feedback);
+            instructor.GenerateFeedback("Excellent work on the assessment!");
 
             Console.WriteLine("\nEdge Case: Instructors cannot open assessments due to timeout loading.");
-            await instructor.OpenAssessmentWithTimeout(assessmentManagement);
+            
 
             Console.WriteLine("\nEdge Case: Storing feedback fails due to server down.");
-            bool feedbackStored = instructor.StoreFeedback(feedback, false);
-            if (!feedbackStored)
-            {
-                Console.WriteLine("Feedback could not be stored due to server issues.");
-            }
+           instructor.GenerateFeedback("Excellent work on the assessment!");
+            
         }
     }
 }

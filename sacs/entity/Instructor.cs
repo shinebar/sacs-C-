@@ -14,12 +14,11 @@ namespace sacs.entity
         public List<Feedback> Feedbacks { get; set; } = new List<Feedback>(); // Initialize the list
         public Instructor() : base(){ }
         // Constructor
-        public Instructor(string instructorId, string instructorName, string instructorFaculty, string instructorContactInfo, string instructorDepartment)
+        public Instructor(string instructorId, string instructorName, string instructorFaculty, string instructorDepartment) :base()
         {
             Instructor_Id = instructorId;
             Instructor_Name = instructorName;
             Instructor_Faculty = instructorFaculty;
-            Instructor_ContactInfo = instructorContactInfo;
             Instructor_Department = instructorDepartment;
         }
 
@@ -31,10 +30,10 @@ namespace sacs.entity
         }
 
         // Method to generate feedback
-        public void GenerateFeedback(Feedback feedback)
+        public void GenerateFeedback(String feedback)
         {
-            Feedbacks.Add(feedback);
-            Console.WriteLine($"{Instructor_Id}'s feedback is: {feedback.FeedbackText}");
+           
+            Console.WriteLine($"{Instructor_Id}'s feedback is: {feedback}");
         }
 
         public void ViewReport(Assessment assessment)
