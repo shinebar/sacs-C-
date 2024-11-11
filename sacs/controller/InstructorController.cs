@@ -10,7 +10,8 @@ namespace sacs.controller
         {
         }
 
-        public Instructor Instructor { set; get; }
+        private Instructor Instructor { set; get; }
+        private Student student { get; set; }
 
         public void assign_member_out_group()
         {
@@ -64,7 +65,10 @@ namespace sacs.controller
                 {
                     throw new InvalidOperationException("Instructor not initialized");
                 }
-
+                if (student == null)
+                {
+                    throw new InvalidOperationException("Instructor not initialized");
+                }
                 // Placeholder for grade viewing logic
                 Console.WriteLine("Displaying grades:");
                 Console.WriteLine("------------------");
